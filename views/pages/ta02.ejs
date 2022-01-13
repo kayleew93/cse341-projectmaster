@@ -7,17 +7,53 @@
 
 <body>
   <% include ../includes/nav.ejs %>
-    <div class="jumbotron text-center">
-      <div class="container">
-        <h1>
-          <%= title %>
-        </h1>
-        <p>This is the placeholder for Team Activity 02</p>
-      </div>
-    </div>
+  <div class="jumbotron text-center">
     <div class="container">
-
+      <h1>
+        <%= title %>
+      </h1> 
     </div>
+  </div>
+  <div class="container">
+    <!-- Form to add users -->
+    <form action="/ta02/addUser" method="POST">
+      <label for="addUser">Add User</label>
+      <input type="text" name="addUser" id="addUser">
+      <button type="submit">Add User</button>
+    </form>
+  </div>
+
+  <div class="container">
+    <!-- Form to remove users -->
+    <form action="/ta02/removeUser" method="POST">
+      <label for="removeUser">Remove User</label>
+      <input type="text" name="removeUser" id="removeUser">
+      <button type="submit">Remove User</button>
+    </form>
+  </div>
+
+  <% if (typeof errorMessage !== 'undefined') { %>
+    <h2><%= errorMessage %> </h2>
+  <% } %> 
+
+<!-- Display the users -->
+
+
+  <% if (names.length > 0) { %>
+  <div class="grid">
+    <h2>Users</h2>
+    <% for (let name of names) { %>
+    <ul>
+      <li><%= name %></li>
+    </ul>
+    <% } %>
+  </div>
+  <% } else { %>
+  <h1>No users found!</h1>
+  <% } %>
+
+
+
 
 
 </body>
