@@ -61,7 +61,7 @@ router.post('/removeUser', (req, res, next) => {
     message = "Error: No users of that name";
   }
   if (index > -1) {
-    names.splice(index, 1)
+    names.splice(index, 1);
   }
 
   res.render('pages/ta02', {
